@@ -27,7 +27,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
 
 <header class="bg-white shadow-sm">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-6">
-    <a href="index.html" class="flex items-center gap-3">
+    <a href="{{ route('catalogue') }}" class="flex items-center gap-3">
       <div class="rounded-lg p-2" style="background:linear-gradient(135deg,var(--amber),var(--accent)); color:white; font-weight:700;">CM</div>
       <div>
         <div class="text-lg font-semibold" style="font-family:'Merriweather Sans',Inter;">CampusMarket</div>
@@ -74,12 +74,12 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
         </button>
       </div>
   </form>
-    <nav class="flex items-center gap-3">
+    <nav class="flex items-center gap-6">
       <a href="products.html" class="text-sm text-gray-700 hover:text-var(--amber)">Produk</a>
-      <a href="orders.html" class="text-sm text-gray-700">Pesanan</a>
-      <a href="profile.html" class="text-sm text-gray-700">Profil</a>
-      <a href="login.html" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
-      <a href="cart.html" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Keranjang</a>
+      {{-- <a href="orders.html" class="text-sm text-gray-700">Pesanan</a> --}}
+      <a href="{{ route('seller.products') }}" class="text-sm text-gray-700">Profil</a>
+      <a href="{{ route("seller.products") }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
+      <a href="{{ route('seller.register') }}" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Register</a>
     </nav>
   </div>
 </header>

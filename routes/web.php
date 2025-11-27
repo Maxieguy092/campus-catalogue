@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellerAuthController;
 use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\ProductController;
 use App\Models\Seller;
 use App\Mail\SellerStatusChanged;
 use Illuminate\Support\Facades\Mail;
 
 // Redirect default ke halaman register seller
 Route::get('/', function () {
-    return redirect()->route('seller.register');
+    return redirect()->route('catalogue');
 });
 
 // =========================
@@ -20,6 +21,14 @@ Route::get('/seller/register', [SellerAuthController::class, 'registerView'])
 
 Route::post('/seller/register', [SellerAuthController::class, 'register'])
     ->name('seller.register.submit');
+
+Route::get('/seller/products', [ProductController::class, 'sellerIndex'])->name('seller.products');
+Route::get('/seller/products/create', [ProductController::class, 'sellerCreate'])->name('seller.products.create');
+Route::post('/seller/products/store', [ProductController::class, 'sellerStore'])->name('seller.products.store');
+Route::get('/seller/products/{id}/edit', [ProductController::class, 'sellerEdit'])->name('seller.products.edit');
+Route::put('/seller/products/{id}/update', [ProductController::class, 'sellerUpdate'])->name('seller.products.update');
+Route::delete('/seller/products/{id}/delete', [ProductController::class, 'sellerDelete'])->name('seller.products.delete');
+// Route::get('/seller/login');
 
 // =========================
 // PLATFORM ADMIN DASHBOARD
@@ -39,6 +48,20 @@ Route::get('/platform/seller/{id}/detail', [PlatformController::class, 'detail']
 Route::get('/platform/seller/{id}', [PlatformController::class, 'detail'])
      ->name('platform.seller.detail');
 
+Route::get('/platform/categories', [PlatformController::class, 'categories'])
+    ->name('platform.categories');
+
+Route::post('/platform/categories/store', [PlatformController::class, 'storeCategory'])
+    ->name('platform.categories.store');
+
+Route::delete('/platform/categories/{id}', [PlatformController::class, 'deleteCategory'])
+    ->name('platform.categories.delete');
+
+// =========================
+// Catalogue Pages
+// =========================
+
+Route::get('/catalogue', [ProductController::class, 'index'])->name('catalogue');
 
 // =========================
 // TEST EMAIL (temporary)

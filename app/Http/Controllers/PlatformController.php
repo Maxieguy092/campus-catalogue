@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Seller;
 use App\Mail\SellerStatusChanged;
+use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
@@ -97,6 +98,30 @@ class PlatformController extends Controller
     {
         $seller = Seller::findOrFail($id);
         return view('platform.show', compact('seller'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::orderBy('created_at', 'desc')->get();
+        return view('platform.categories', compact('categories'));
+    }
+
+    public function storeCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
+
+        Category::create(['name' => $request->name]);
+
+        return back()->with('success', 'Kategori berhasil ditambahkan!');
+    }
+
+    public function deleteCategory($id)
+    {
+        Category::findOrFail($id)->delete();
+
+        return back()->with('success', 'Kategori berhasil dihapus!');
     }
 
 }

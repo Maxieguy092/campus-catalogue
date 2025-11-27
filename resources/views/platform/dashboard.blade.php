@@ -12,18 +12,39 @@
     <div class="flex h-screen">
 
         <!-- ========== Sidebar ========== -->
-        <aside class="w-64 bg-white shadow-md">
-            <div class="p-5 border-b">
-                <h1 class="text-xl font-bold text-blue-600">SellerHub</h1>
+        <aside class="w-64 bg-white shadow-md flex flex-col">
+            <div class="p-6 border-b">
+                <h1 class="text-2xl font-bold text-blue-700 tracking-wide">SellerHub</h1>
             </div>
 
-            <nav class="mt-5">
+            <nav class="mt-4 flex flex-col gap-1">
+
+                <!-- Dashboard -->
                 <a href="{{ route('platform.dashboard') }}"
-                    class="flex items-center gap-3 px-5 py-3 text-white bg-blue-600 font-semibold">
-                    <span>📊</span> Dashboard
+                    class="flex items-center gap-3 px-6 py-3 text-gray-700 font-semibold rounded-md 
+                        hover:bg-blue-50 hover:text-blue-700 transition">
+
+                    <span class="text-lg">📊</span>
+                    Dashboard
                 </a>
+
+                <!-- Categories -->
+                <a href="{{ route('platform.categories') }}"
+                    class="flex items-center gap-3 px-6 py-3 text-gray-700 font-semibold rounded-md 
+                        hover:bg-blue-50 hover:text-blue-700 transition">
+
+                    <span class="text-lg">📁</span>
+                    Kategori
+                </a>
+
             </nav>
+
+            <div class="mt-auto p-6 border-t text-sm text-gray-400">
+                Seller Panel • {{ date('Y') }}
+            </div>
         </aside>
+
+
 
         <!-- ========== Content ========== -->
         <main class="flex-1 p-8 overflow-auto">

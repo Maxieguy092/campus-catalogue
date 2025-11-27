@@ -48,6 +48,66 @@ class ProductController extends Controller
         ]);
     }
 
+    public function sellerIndex()
+    {
+        $products = Product::with('category')->get();
+
+        return view('seller.products.index', compact('products'));
+    }
+
+    public function sellerCreate()
+    {
+        $categories = Category::all();
+        return view('seller.products.create', compact('categories'));
+    }
+
+    public function sellerStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'harga' => 'required|numeric',
+            'category_id' => 'required',
+            'kondisi' => 'required',
+            'image_link' => 'required|url',
+        ]);
+
+        Product::create($request->all());
+
+        return redirect()->route('seller.products')->with('success', 'Produk berhasil ditambahkan!');
+    }
+
+    public function sellerEdit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+
+        return view('seller.products.edit', compact('product', 'categories'));
+    }
+
+    public function sellerUpdate(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'harga' => 'required|numeric',
+            'category_id' => 'required',
+            'kondisi' => 'required',
+            'image_link' => 'required|url',
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('seller.products')->with('success', 'Produk berhasil diperbarui!');
+    }
+
+    public function sellerDelete($id)
+    {
+        Product::findOrFail($id)->delete();
+
+        return back()->with('success', 'Produk berhasil dihapus!');
+    }
+
 
     /**
      * Show the form for creating a new resource.
