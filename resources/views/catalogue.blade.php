@@ -75,11 +75,18 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
       </div>
   </form>
     <nav class="flex items-center gap-6">
-      {{-- <a href="products.html" class="text-sm text-gray-700 hover:text-var(--amber)">Produk</a> --}}
-      {{-- <a href="orders.html" class="text-sm text-gray-700">Pesanan</a> --}}
-      <a href="{{ route('seller.dashboard') }}" class="px-3 py-2 bg-white border rounded-md text-sm">Dashboard</a>
-      <a href="{{ route('seller.login') }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
-      <a href="{{ route('seller.register') }}" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Register</a>
+        @if(session()->has('seller_id'))
+            <a href="{{ route('seller.dashboard') }}" class="px-3 py-2 bg-white border rounded-md text-sm">Dashboard</a>
+            <form action="{{ route('seller.logout') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">
+                    Logout
+                </button>
+            </form>
+        @else
+            <a href="{{ route('seller.login') }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
+            <a href="{{ route('seller.register') }}" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Register</a>
+        @endif
     </nav>
   </div>
 </header>

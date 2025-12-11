@@ -24,7 +24,7 @@ Route::post('/seller/register', [SellerAuthController::class, 'register'])
     ->name('seller.register.submit');
 Route::get('/seller/login', [SellerAuthController::class, 'loginView'])->name('seller.login');
 Route::post('/seller/login', [SellerAuthController::class, 'login'])->name('seller.login.submit');
-
+Route::post('/seller/logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
 
 Route::middleware('seller_auth')->group(function () {
     // all seller-only routes here

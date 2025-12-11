@@ -12,6 +12,7 @@ class SellerSeeder extends Seeder
     {
         // Buat seller dummy untuk testing
         Seller::create([
+            'id' => 1,
             'store_name' => 'Toko Utama',
             'store_description' => 'Toko utama untuk produk testing',
             'pic_name' => 'Admin Toko',

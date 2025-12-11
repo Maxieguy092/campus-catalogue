@@ -18,6 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        // Public catalogue: show ALL products, optionally filtered
         $query = Product::with('category');
 
         if ($request->filled('name')) {
@@ -34,14 +35,15 @@ class ProductController extends Controller
 
         $products = $query->get()->map(function ($p) {
             return [
+                'id' => $p->id,
                 'name' => $p->name,
                 'image_link' => $p->image_link,
                 'kondisi' => $p->kondisi,
                 'harga' => $p->harga,
-                'link' => '/product/' . $p->id,
+                'link' => route('product.detail', $p->id),
                 'category' => ['name' => $p->category?->name],
             ];
-        })->toArray();
+        });
 
         $categories = Category::all();
 
@@ -52,21 +54,31 @@ class ProductController extends Controller
         ]);
     }
 
+
     public function sellerIndex()
     {
-        $products = Product::with('category')->get()->map(function ($p) {
-            return [
-                'id' => $p->id,
-                'name' => $p->name,
-                'harga' => 'Rp ' . number_format($p->harga, 0, ',', '.'),
-                'kondisi' => $p->kondisi,
-                'image_link' => $p->image_link,
-                'category' => ['name' => $p->category?->name],
-            ];
-        })->toArray();
+        // Get the logged-in seller ID from the session
+        $sellerId = session('seller_id');
+
+        // Fetch only products belonging to this seller
+        $products = Product::where('seller_id', $sellerId)
+            ->with('category')
+            ->get()
+            ->map(function ($p) {
+                return [
+                    'id' => $p->id,
+                    'name' => $p->name,
+                    'harga' => 'Rp ' . number_format($p->harga, 0, ',', '.'),
+                    'kondisi' => $p->kondisi,
+                    'image_link' => $p->image_link,
+                    'category' => ['name' => $p->category?->name],
+                ];
+            })
+            ->toArray();
 
         return view('seller.products.index', compact('products'));
     }
+
 
     public function sellerCreate()
     {
@@ -93,6 +105,8 @@ class ProductController extends Controller
             $imagePath = $request->file('image_link')->store('products', 'public');
         }
 
+        $sellerId = session('seller_id');
+
         Product::create([
             'name' => $request->name,
             'harga' => $request->harga,
@@ -101,7 +115,7 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'description' => $request->description,
             'image_link' => $imagePath,
-            'seller_id' => 1, // TODO: Get from authenticated seller
+            'seller_id' => $sellerId, // TODO: Get from authenticated seller
         ]);
 
         return redirect()->route('seller.products')->with('success', 'Produk berhasil ditambahkan!');
@@ -166,7 +180,7 @@ class ProductController extends Controller
     public function sellerDashboard()
     {
         // For now, using seller_id = 1; TODO: replace with authenticated seller
-        $sellerId = 1;
+        $sellerId = session('seller_id');
         
         $products = Product::where('seller_id', $sellerId)->with('ratings')->get();
         $totalProducts = $products->count();
@@ -299,7 +313,7 @@ class ProductController extends Controller
      */
     public function exportSellerDashboardPDF()
     {
-        $sellerId = 1; // TODO: use authenticated seller
+        $sellerId = session('seller_id'); // TODO: use authenticated seller
         
         $products = Product::where('seller_id', $sellerId)->with('ratings')->get();
         $totalProducts = $products->count();
@@ -331,7 +345,7 @@ class ProductController extends Controller
      */
     public function exportSellerStockReport()
     {
-        $sellerId = 1; // TODO: use authenticated seller
+        $sellerId = session('seller_id'); // TODO: use authenticated seller
         
         $products = Product::where('seller_id', $sellerId)
             ->with(['category', 'ratings'])
@@ -354,7 +368,7 @@ class ProductController extends Controller
      */
     public function exportSellerRatingReport()
     {
-        $sellerId = 1; // TODO: use authenticated seller
+        $sellerId = session('seller_id'); // TODO: use authenticated seller
         
         $products = Product::where('seller_id', $sellerId)
             ->with(['category', 'ratings'])
@@ -377,7 +391,7 @@ class ProductController extends Controller
      */
     public function exportSellerLowStockReport()
     {
-        $sellerId = 1; // TODO: use authenticated seller
+        $sellerId = session('seller_id'); // TODO: use authenticated seller
         
         $lowStockProducts = Product::where('seller_id', $sellerId)
             ->where('stock', '<', 2)
