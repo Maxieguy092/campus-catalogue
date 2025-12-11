@@ -45,7 +45,7 @@
                     <!-- EMAIL -->
                     <div>
                         <label class="font-semibold text-gray-700">Email *</label>
-                        <input type="email" name="email"
+                        <input type="email" name="pic_email"
                                class="w-full mt-1 p-3 border rounded-md focus:ring focus:ring-blue-300"
                                required>
                     </div>

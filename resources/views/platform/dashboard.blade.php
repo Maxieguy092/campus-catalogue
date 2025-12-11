@@ -14,7 +14,7 @@
         <!-- ========== Sidebar ========== -->
         <aside class="w-64 bg-white shadow-md flex flex-col">
             <div class="p-6 border-b">
-                <h1 class="text-2xl font-bold text-blue-700 tracking-wide">SellerHub</h1>
+                <h1 class="text-2xl font-bold text-blue-700 tracking-wide">Dashboard</h1>
             </div>
 
             <nav class="mt-4 flex flex-col gap-1">

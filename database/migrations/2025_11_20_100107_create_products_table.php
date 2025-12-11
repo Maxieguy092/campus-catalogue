@@ -27,6 +27,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->string('harga');
             $table->string('image_link')->default('images/placeholder.png');
+            $table->foreignId('seller_id')->constrained('sellers')->cascadeOnDelete();
         });
     }
 

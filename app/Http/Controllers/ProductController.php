@@ -65,7 +65,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'harga' => 'required|numeric',
+            'harga' => 'required|string',
             'category_id' => 'required',
             'kondisi' => 'required',
             'image_link' => 'required|url',
@@ -90,7 +90,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'harga' => 'required|numeric',
+            'harga' => 'required|string',
             'category_id' => 'required',
             'kondisi' => 'required',
             'image_link' => 'required|url',

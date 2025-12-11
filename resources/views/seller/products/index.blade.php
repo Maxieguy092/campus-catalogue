@@ -72,7 +72,8 @@ body{
                 </thead>
 
                 <tbody class="bg-white text-sm">
-
+                    {{-- Belum nge handle produk sesuai dengan pemilik produk --}}
+                    {{-- Tinggal ganti query products sesuai dengan UID penjual --}}
                     @foreach ($products as $product)
                     <tr class="hover:bg-gray-50 transition">
                         <td class="p-4 border-b border-gray-200">
