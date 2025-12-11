@@ -212,7 +212,7 @@ body{
                     @if($product->image_link)
                     <div class="mb-4">
                         <p class="text-sm text-gray-600 mb-2">Gambar saat ini:</p>
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="h-32 w-32 object-cover rounded-lg border">
+                        <img src="{{ asset('storage/' . $product->image_link) }}" alt="{{ $product->name }}" class="h-32 w-32 object-cover rounded-lg border">
                     </div>
                     @endif
                     

@@ -57,7 +57,7 @@
             <!-- Product Image -->
             <div class="bg-white rounded-lg shadow-md p-6 h-full">
                 <img 
-                    src="{{ $product->image_url }}" 
+                    src="{{ asset('storage/' . $product->image_link) }}" 
                     alt="{{ $product->name }}"
                     class="w-full rounded-lg"
                     style="object-fit:cover;"
