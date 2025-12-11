@@ -44,12 +44,20 @@ body{
 
 <body>
 
+<<<<<<< HEAD
 <div class="flex min-h-screen">
+=======
+<div class="min-h-screen">
+>>>>>>> master
 
     {{-- Sidebar (unchanged, just styled container) --}}
     @include('components.sidebar')
 
+<<<<<<< HEAD
     <div class="flex-1 p-8">
+=======
+    <div class="ml-60 p-8">
+>>>>>>> master
 
         <h1 class="text-3xl font-semibold mb-6" style="font-family:'Merriweather Sans',Inter;">
             Produk Saya

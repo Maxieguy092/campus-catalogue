@@ -119,7 +119,11 @@
                                class="w-full mt-1 p-3 border rounded-md focus:ring focus:ring-blue-300">
                     </div>
 
+<<<<<<< HEAD
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+=======
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+>>>>>>> master
 
                         <div>
                             <label class="font-semibold text-gray-700">RT *</label>
@@ -139,6 +143,15 @@
                                    class="w-full mt-1 p-3 border rounded-md focus:ring focus:ring-blue-300">
                         </div>
 
+<<<<<<< HEAD
+=======
+                        <div>
+                            <label class="font-semibold text-gray-700">Kecamatan *</label>
+                            <input type="text" name="pic_kecamatan"
+                                   class="w-full mt-1 p-3 border rounded-md focus:ring focus:ring-blue-300">
+                        </div>
+
+>>>>>>> master
                     </div>
 
 

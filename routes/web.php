@@ -22,6 +22,17 @@ Route::get('/seller/register', [SellerAuthController::class, 'registerView'])
 Route::post('/seller/register', [SellerAuthController::class, 'register'])
     ->name('seller.register.submit');
 
+<<<<<<< HEAD
+=======
+Route::get('/seller/dashboard', [ProductController::class, 'sellerDashboard'])->name('seller.dashboard');
+Route::get('/seller/dashboard/export-pdf', [ProductController::class, 'exportSellerDashboardPDF'])->name('seller.dashboard.export-pdf');
+
+// Laporan Penjual
+Route::get('/seller/reports/stock', [ProductController::class, 'exportSellerStockReport'])->name('seller.reports.stock');
+Route::get('/seller/reports/rating', [ProductController::class, 'exportSellerRatingReport'])->name('seller.reports.rating');
+Route::get('/seller/reports/low-stock', [ProductController::class, 'exportSellerLowStockReport'])->name('seller.reports.low-stock');
+
+>>>>>>> master
 Route::get('/seller/products', [ProductController::class, 'sellerIndex'])->name('seller.products');
 Route::get('/seller/products/create', [ProductController::class, 'sellerCreate'])->name('seller.products.create');
 Route::post('/seller/products/store', [ProductController::class, 'sellerStore'])->name('seller.products.store');
@@ -36,6 +47,17 @@ Route::delete('/seller/products/{id}/delete', [ProductController::class, 'seller
 Route::get('/platform/dashboard', [PlatformController::class, 'dashboard'])
     ->name('platform.dashboard');
 
+<<<<<<< HEAD
+=======
+Route::get('/platform/dashboard/export-pdf', [PlatformController::class, 'exportPlatformDashboardPDF'])
+    ->name('platform.dashboard.export-pdf');
+
+// Laporan Admin Platform
+Route::get('/platform/reports/seller-list', [PlatformController::class, 'exportSellerListReport'])->name('platform.reports.seller-list');
+Route::get('/platform/reports/store-by-province', [PlatformController::class, 'exportStoreByProvinceReport'])->name('platform.reports.store-by-province');
+Route::get('/platform/reports/product-rating', [PlatformController::class, 'exportProductRatingReport'])->name('platform.reports.product-rating');
+
+>>>>>>> master
 Route::post('/platform/seller/{id}/approve', [PlatformController::class, 'approve'])
     ->name('platform.seller.approve');
 
@@ -62,6 +84,11 @@ Route::delete('/platform/categories/{id}', [PlatformController::class, 'deleteCa
 // =========================
 
 Route::get('/catalogue', [ProductController::class, 'index'])->name('catalogue');
+<<<<<<< HEAD
+=======
+Route::get('/product/{id}', [ProductController::class, 'showDetail'])->name('product.detail');
+Route::post('/product/{id}/rating', [ProductController::class, 'storeRating'])->name('product.rating.store');
+>>>>>>> master
 
 // =========================
 // TEST EMAIL (temporary)
@@ -80,3 +107,12 @@ Route::get('/test-email', function () {
         return 'Error: ' . $e->getMessage();
     }
 });
+<<<<<<< HEAD
+=======
+
+// =========================
+// TEMPORARY: Direct Access untuk Testing (hapus nanti)
+// =========================
+Route::get('/admin/dashboard-test', [PlatformController::class, 'dashboard'])
+    ->name('admin.dashboard.test');
+>>>>>>> master
