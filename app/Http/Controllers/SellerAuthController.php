@@ -32,6 +32,10 @@ class SellerAuthController extends Controller
             'pic_rt'            => 'required',
             'pic_rw'            => 'required',
             'pic_village'       => 'required',
+<<<<<<< HEAD
+=======
+            'pic_kecamatan'     => 'required',
+>>>>>>> master
             'pic_city'          => 'required',
             'pic_province'      => 'required',
             'pic_ktp_number'    => 'required',
@@ -56,6 +60,10 @@ class SellerAuthController extends Controller
             'pic_rt'            => $request->pic_rt,
             'pic_rw'            => $request->pic_rw,
             'pic_village'       => $request->pic_village,
+<<<<<<< HEAD
+=======
+            'pic_kecamatan'     => $request->pic_kecamatan,
+>>>>>>> master
             'pic_city'          => $request->pic_city,
             'pic_province'      => $request->pic_province,
 

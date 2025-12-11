@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+<<<<<<< HEAD
+=======
+            SellerSeeder::class,
+>>>>>>> master
             CategorySeeder::class,
             ProductSeeder::class,
         ]);

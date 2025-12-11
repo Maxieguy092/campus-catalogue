@@ -8,6 +8,10 @@ use App\Mail\SellerStatusChanged;
 use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+<<<<<<< HEAD
+=======
+use Barryvdh\DomPDF\Facade\Pdf;
+>>>>>>> master
 
 class PlatformController extends Controller
 {
@@ -124,4 +128,88 @@ class PlatformController extends Controller
         return back()->with('success', 'Kategori berhasil dihapus!');
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Export platform dashboard to PDF
+     */
+    public function exportPlatformDashboardPDF()
+    {
+        $data = [
+            'totalSellers' => Seller::count(),
+            'activeSellers' => Seller::where('status', 'accepted')->count(),
+            'pendingSellers' => Seller::where('status', 'pending')->count(),
+            'rejectedSellers' => Seller::where('status', 'rejected')->count(),
+            'latestSellers' => Seller::latest()->limit(10)->get(),
+            'generatedAt' => now()->format('d M Y H:i'),
+        ];
+        
+        $pdf = Pdf::loadView('reports.platform-dashboard-pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->setOption('defaultFont', 'sans-serif');
+        
+        return $pdf->download('platform-dashboard-' . now()->format('Y-m-d-His') . '.pdf');
+    }
+
+    /**
+     * Laporan 1: Daftar Akun Penjual Aktif dan Tidak Aktif
+     */
+    public function exportSellerListReport()
+    {
+        $sellers = Seller::all();
+        
+        $data = [
+            'sellers' => $sellers,
+            'generatedAt' => now()->format('d M Y H:i'),
+        ];
+        
+        $pdf = Pdf::loadView('reports.admin-seller-list-report', $data)
+            ->setPaper('a4')
+            ->setOption('defaultFont', 'sans-serif');
+        
+        return $pdf->download('laporan-akun-penjual-' . now()->format('Y-m-d-His') . '.pdf');
+    }
+
+    /**
+     * Laporan 2: Daftar Toko Berdasarkan Lokasi Provinsi
+     */
+    public function exportStoreByProvinceReport()
+    {
+        $sellers = Seller::with('products')->get();
+        
+        // Group by province
+        $sellersByProvince = $sellers->groupBy('pic_province');
+        
+        $data = [
+            'sellersByProvince' => $sellersByProvince,
+            'generatedAt' => now()->format('d M Y H:i'),
+        ];
+        
+        $pdf = Pdf::loadView('reports.admin-store-by-province-report', $data)
+            ->setPaper('a4')
+            ->setOption('defaultFont', 'sans-serif');
+        
+        return $pdf->download('laporan-toko-per-provinsi-' . now()->format('Y-m-d-His') . '.pdf');
+    }
+
+    /**
+     * Laporan 3: Daftar Produk dan Rating (Diurutkan Rating Menurun)
+     */
+    public function exportProductRatingReport()
+    {
+        $products = \App\Models\Product::with(['seller', 'category', 'ratings'])->get();
+        
+        $data = [
+            'products' => $products,
+            'generatedAt' => now()->format('d M Y H:i'),
+        ];
+        
+        $pdf = Pdf::loadView('reports.admin-product-rating-report', $data)
+            ->setPaper('a4')
+            ->setOption('defaultFont', 'sans-serif');
+        
+        return $pdf->download('laporan-produk-rating-' . now()->format('Y-m-d-His') . '.pdf');
+    }
+
+>>>>>>> master
 }

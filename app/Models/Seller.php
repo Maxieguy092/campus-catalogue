@@ -21,6 +21,10 @@ class Seller extends Authenticatable
         'pic_rt',
         'pic_rw',
         'pic_village',
+<<<<<<< HEAD
+=======
+        'pic_kecamatan',
+>>>>>>> master
         'pic_city',
         'pic_province',
         'pic_ktp_number',
@@ -39,6 +43,15 @@ class Seller extends Authenticatable
         'updated_at' => 'datetime',
     ];
 
+<<<<<<< HEAD
+=======
+    // Relationships
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'seller_id');
+    }
+
+>>>>>>> master
     public function toArray()
     {
         return [

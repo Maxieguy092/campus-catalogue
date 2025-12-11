@@ -36,7 +36,11 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
     </a>
     <form action="{{ route('catalogue') }}" method="GET" class="flex flex-col gap-2">
       <!-- Container matching header search -->
+<<<<<<< HEAD
       <div class="flex items-center gap-2 bg-gradient-to-r from-amber-100/20 to-amber-50/20 border border-amber-200 rounded-lg px-3 py-2">
+=======
+      <div class="flex items-center gap-2 bg-linear-to-r from-amber-100/20 to-amber-50/20 border border-amber-200 rounded-lg px-3 py-2">
+>>>>>>> master
           <!-- Search icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-search w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="7"/>
@@ -77,7 +81,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
     <nav class="flex items-center gap-6">
       <a href="products.html" class="text-sm text-gray-700 hover:text-var(--amber)">Produk</a>
       {{-- <a href="orders.html" class="text-sm text-gray-700">Pesanan</a> --}}
-      <a href="{{ route('seller.products') }}" class="text-sm text-gray-700">Profil</a>
+      <a href="{{ route('seller.dashboard') }}" class="text-sm text-gray-700">Profil</a>
       <a href="{{ route('seller.login') }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
       <a href="{{ route('seller.register') }}" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Register</a>
     </nav>
@@ -140,7 +144,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
         </div>
 
         <div class="mt-3 flex items-center justify-between">
-            <div class="font-semibold">{{ $p['harga'] }}</div>
+            <div class="font-semibold">Rp {{ number_format($p['harga'], 0, ',', '.') }}</div>
             <a href="{{ $p['link'] }}" class="text-sm" style="color:var(--amber);">Detail</a>
         </div>
 
