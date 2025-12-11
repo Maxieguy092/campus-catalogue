@@ -28,7 +28,10 @@ Route::post('/seller/products/store', [ProductController::class, 'sellerStore'])
 Route::get('/seller/products/{id}/edit', [ProductController::class, 'sellerEdit'])->name('seller.products.edit');
 Route::put('/seller/products/{id}/update', [ProductController::class, 'sellerUpdate'])->name('seller.products.update');
 Route::delete('/seller/products/{id}/delete', [ProductController::class, 'sellerDelete'])->name('seller.products.delete');
-// Route::get('/seller/login');
+// Seller Login
+Route::get('/seller/login', [SellerAuthController::class, 'loginView'])->name('seller.login');
+Route::post('/seller/login', [SellerAuthController::class, 'login'])->name('seller.login.submit');
+
 
 // =========================
 // PLATFORM ADMIN DASHBOARD

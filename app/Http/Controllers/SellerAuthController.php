@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class SellerAuthController extends Controller
 {
@@ -65,7 +66,31 @@ class SellerAuthController extends Controller
             'password' => Hash::make($request->password),
             'status'   => 'pending',
         ]);
+
         return redirect()->back()->with('success', 'Registration successful! Waiting for admin verification.');
     }
-}
 
+    public function loginView()
+    {
+        return view('seller.login');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'pic_email' => 'required|email',
+            'password'  => 'required'
+        ]);
+
+        $seller = Seller::where('pic_email', $request->pic_email)->first();
+
+        if (!$seller || !Hash::check($request->password, $seller->password)) {
+            return back()->withErrors(['pic_email' => 'Invalid email or password.']);
+        }
+
+        // Store seller session
+        session(['seller_id' => $seller->id]);
+
+        return redirect()->route('seller.products');
+    }
+}

@@ -78,7 +78,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
       <a href="products.html" class="text-sm text-gray-700 hover:text-var(--amber)">Produk</a>
       {{-- <a href="orders.html" class="text-sm text-gray-700">Pesanan</a> --}}
       <a href="{{ route('seller.products') }}" class="text-sm text-gray-700">Profil</a>
-      <a href="{{ route("seller.products") }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
+      <a href="{{ route('seller.login') }}" class="px-3 py-2 bg-white border rounded-md text-sm" style="border-color:rgba(15,23,42,0.06);">Masuk</a>
       <a href="{{ route('seller.register') }}" class="px-3 py-2 bg-var(--amber) text-white rounded-md text-sm" style="background:var(--amber);">Register</a>
     </nav>
   </div>
