@@ -95,4 +95,12 @@ class SellerAuthController extends Controller
 
         return redirect()->route('seller.products');
     }
+
+    public function logout()
+    {
+        session()->forget(['seller_id', 'seller_name']);
+        session()->flush();
+
+        return redirect()->route('seller.login');
+    }
 }

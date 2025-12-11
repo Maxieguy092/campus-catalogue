@@ -16,29 +16,34 @@ Route::get('/', function () {
 // =========================
 // SELLER AUTH REGISTER
 // =========================
+
 Route::get('/seller/register', [SellerAuthController::class, 'registerView'])
     ->name('seller.register');
 
 Route::post('/seller/register', [SellerAuthController::class, 'register'])
     ->name('seller.register.submit');
-
-Route::get('/seller/dashboard', [ProductController::class, 'sellerDashboard'])->name('seller.dashboard');
-Route::get('/seller/dashboard/export-pdf', [ProductController::class, 'exportSellerDashboardPDF'])->name('seller.dashboard.export-pdf');
-
-// Laporan Penjual
-Route::get('/seller/reports/stock', [ProductController::class, 'exportSellerStockReport'])->name('seller.reports.stock');
-Route::get('/seller/reports/rating', [ProductController::class, 'exportSellerRatingReport'])->name('seller.reports.rating');
-Route::get('/seller/reports/low-stock', [ProductController::class, 'exportSellerLowStockReport'])->name('seller.reports.low-stock');
-
-Route::get('/seller/products', [ProductController::class, 'sellerIndex'])->name('seller.products');
-Route::get('/seller/products/create', [ProductController::class, 'sellerCreate'])->name('seller.products.create');
-Route::post('/seller/products/store', [ProductController::class, 'sellerStore'])->name('seller.products.store');
-Route::get('/seller/products/{id}/edit', [ProductController::class, 'sellerEdit'])->name('seller.products.edit');
-Route::put('/seller/products/{id}/update', [ProductController::class, 'sellerUpdate'])->name('seller.products.update');
-Route::delete('/seller/products/{id}/delete', [ProductController::class, 'sellerDelete'])->name('seller.products.delete');
-// Seller Login
 Route::get('/seller/login', [SellerAuthController::class, 'loginView'])->name('seller.login');
 Route::post('/seller/login', [SellerAuthController::class, 'login'])->name('seller.login.submit');
+
+
+Route::middleware('seller_auth')->group(function () {
+    // all seller-only routes here
+    Route::get('/seller/dashboard', [ProductController::class, 'sellerDashboard'])->name('seller.dashboard');
+    Route::get('/seller/dashboard/export-pdf', [ProductController::class, 'exportSellerDashboardPDF'])->name('seller.dashboard.export-pdf');
+
+    // Laporan Penjual
+    Route::get('/seller/reports/stock', [ProductController::class, 'exportSellerStockReport'])->name('seller.reports.stock');
+    Route::get('/seller/reports/rating', [ProductController::class, 'exportSellerRatingReport'])->name('seller.reports.rating');
+    Route::get('/seller/reports/low-stock', [ProductController::class, 'exportSellerLowStockReport'])->name('seller.reports.low-stock');
+
+    Route::get('/seller/products', [ProductController::class, 'sellerIndex'])->name('seller.products');
+    Route::get('/seller/products/create', [ProductController::class, 'sellerCreate'])->name('seller.products.create');
+    Route::post('/seller/products/store', [ProductController::class, 'sellerStore'])->name('seller.products.store');
+    Route::get('/seller/products/{id}/edit', [ProductController::class, 'sellerEdit'])->name('seller.products.edit');
+    Route::put('/seller/products/{id}/update', [ProductController::class, 'sellerUpdate'])->name('seller.products.update');
+    Route::delete('/seller/products/{id}/delete', [ProductController::class, 'sellerDelete'])->name('seller.products.delete');
+    // Seller Login
+});
 
 
 // =========================
