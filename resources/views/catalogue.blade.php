@@ -36,11 +36,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
     </a>
     <form action="{{ route('catalogue') }}" method="GET" class="flex flex-col gap-2">
       <!-- Container matching header search -->
-<<<<<<< HEAD
-      <div class="flex items-center gap-2 bg-gradient-to-r from-amber-100/20 to-amber-50/20 border border-amber-200 rounded-lg px-3 py-2">
-=======
       <div class="flex items-center gap-2 bg-linear-to-r from-amber-100/20 to-amber-50/20 border border-amber-200 rounded-lg px-3 py-2">
->>>>>>> master
           <!-- Search icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-search w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="7"/>
@@ -132,7 +128,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
     <article class="bg-white p-4 rounded shadow-sm card-hover">
 
         <div class="h-44 bg-gray-100 rounded mb-3">
-            <img src="{{ asset($p['image_link']) }}"
+            <img src="{{ asset('storage/' . $p['image_link']) }}"
                  alt="{{ $p['name'] }}"
                  class="w-full h-full object-cover">
         </div>

@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->string('pic_rw');
             $table->string('pic_village');
             $table->string('pic_city');
+            $table->string('pic_kecamatan');
             $table->string('pic_province');
 
             // Documents

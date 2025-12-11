@@ -32,53 +32,6 @@ class ProductSeeder extends Seeder
         ]);
 
         $products = [
-<<<<<<< HEAD
-            [
-                "name" => "Veni",
-                "kondisi" => "Baru",
-                "harga" => "Rp60,000",
-                "kategori" => "Elektronik",
-                "image_link" => "images/placeholder.png",
-            ],
-            [
-                "name" => "Thus Spake Zarathustra",
-                "kondisi" => "Bekas",
-                "harga" => "Rp120,000",
-                "kategori" => "Elektronik",
-                "image_link" => "images/placeholder.png",
-            ],
-            [
-                "name" => "Beyond Good and Evil",
-                "kondisi" => "Baru",
-                "harga" => "Rp150,000",
-                "kategori" => "Elektronik",
-                "image_link" => "images/placeholder.png",
-            ],
-            [
-                "name" => "The Gay Science",
-                "kondisi" => "Bekas",
-                "harga" => "Rp120,000",
-                "kategori" => "Elektronik",
-                "image_link" => "images/placeholder.png",
-            ],
-        ];
-
-        foreach ($products as $p) {
-
-            // Make sure the category exists
-            $category = Category::firstOrCreate(
-                ['name' => $p['kategori']],
-                // ['description' => $p['kategori']]
-            );
-
-            Product::create([
-                'name'        => $p['name'],
-                'kondisi'     => $p['kondisi'],
-                'harga'       => $p['harga'],
-                'category_id' => $category->id,
-                'seller_id'   => $seller->id,   // ← REQUIRED
-                'image_link'  => $p['image_link'],
-=======
             ['Laptop Pro 15', 'Laptop high-end untuk kebutuhan profesional.', 15000000, 5, 'laptoppro15.jpg', 1],
             ['Smartphone X', 'Smartphone flagship dengan fitur terbaru.', 8000000, 10, 'smartphonex.jpg', 1],
             ['Jaket Hoodie', 'Jaket hoodie nyaman untuk gaya kasual.', 350000, 20, 'hoodie.jpg', 2],
@@ -102,7 +55,6 @@ class ProductSeeder extends Seeder
                 'category_id'   => $p[5],
                 'image_link'    => $p[4],
                 'seller_id'     => 1, // Default seller
->>>>>>> master
             ]);
         }
     }

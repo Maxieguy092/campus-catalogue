@@ -22,6 +22,7 @@ class SellerSeeder extends Seeder
             'pic_rw' => '01',
             'pic_village' => 'Kelurahan Test',
             'pic_city' => 'Jakarta',
+            'pic_kecamatan' => 'DEFG',
             'pic_province' => 'DKI Jakarta',
             'pic_ktp_number' => '1234567890123456',
             'pic_photo_path' => 'sellers/photos/default.jpg',

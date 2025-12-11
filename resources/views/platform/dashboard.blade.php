@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <title>Dashboard Penjual</title>
     <script src="https://cdn.tailwindcss.com"></script>
-<<<<<<< HEAD
-=======
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
->>>>>>> master
 </head>
 
 <body class="bg-gray-100">
@@ -53,9 +50,6 @@
         <!-- ========== Content ========== -->
         <main class="flex-1 p-8 overflow-auto">
 
-<<<<<<< HEAD
-            <h2 class="text-2xl font-bold mb-6">Dashboard Penjual</h2>
-=======
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Dashboard Penjual</h2>
                 <div class="flex gap-3">
@@ -86,7 +80,6 @@
                     </a>
                 </div>
             </div>
->>>>>>> master
 
             <!-- ===== Flash Message ===== -->
             @if(session('success'))
@@ -115,8 +108,6 @@
 
             </div>
 
-<<<<<<< HEAD
-=======
             <!-- ===== Charts ===== -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
@@ -138,7 +129,6 @@
 
             </div>
 
->>>>>>> master
             <!-- ===== Table Latest Sellers ===== -->
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="flex justify-between items-center mb-4">
@@ -232,8 +222,6 @@
         </main>
     </div>
 
-<<<<<<< HEAD
-=======
     <script>
         // Chart 1: Seller Status Distribution (Pie Chart)
         const statusCtx = document.getElementById('sellerStatusChart').getContext('2d');
@@ -296,13 +284,7 @@
         });
     </script>
 
->>>>>>> master
 </body>
 
 </html>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master

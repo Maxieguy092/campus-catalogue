@@ -8,10 +8,7 @@ use App\Mail\SellerStatusChanged;
 use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
-<<<<<<< HEAD
-=======
 use Barryvdh\DomPDF\Facade\Pdf;
->>>>>>> master
 
 class PlatformController extends Controller
 {
@@ -128,8 +125,6 @@ class PlatformController extends Controller
         return back()->with('success', 'Kategori berhasil dihapus!');
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Export platform dashboard to PDF
      */
@@ -211,5 +206,4 @@ class PlatformController extends Controller
         return $pdf->download('laporan-produk-rating-' . now()->format('Y-m-d-His') . '.pdf');
     }
 
->>>>>>> master
 }
